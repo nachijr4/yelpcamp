@@ -1,0 +1,30 @@
+.thumbnail{
+    padding: 0;
+}
+
+img{
+    width: 100%;
+}
+
+.thumbnail .caption-full{
+    padding: 0 9px;
+}
+
+.pull-right{
+    margin-top:2.8px;
+}
+
+#deleteform{
+    display: inline;
+}
+
+button{
+    margin-bottom: 5px;
+}
+
+.edittag{
+    margin-bottom: 5px;
+}
+span{
+    margin-right: 5px;
+}
