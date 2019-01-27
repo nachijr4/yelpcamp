@@ -23,7 +23,8 @@ var campgroundroutes = require("./routes/campground.js"),
     
 // seedsdb();
 //---------------------------------------------------------------------
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use (express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
