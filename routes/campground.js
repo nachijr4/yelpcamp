@@ -8,25 +8,26 @@ var middleware = require("../middleware/index.js");
 routes.get("/campgrounds", function(req,res){
     campground.find({},function(err , allcampgrounds){
         if(err){
-            req.flash("error",err.message);
-            res.redirect("/campgrounds/"+req.params.id);
+            // req.flash("error",err.message);
+            // res.redirect("/campgrounds/"+req.params.id);
+            console.log(err);
         }
         else{
             res.render("campground/index.ejs",{campgrounds: allcampgrounds, currentuser: req.user});
         }
     });
-       
+
     //   res.render("campgrounds.ejs", {campgrounds: campgrounds});
 });
 //create to create new campground
 routes.post("/campgrounds",middleware.isLoggedIn, function(req,res){
    // get data from form and add to the campground array
-   var name = req.body.name, 
-       image_url = req.body.image_url, 
+   var name = req.body.name,
+       image_url = req.body.image_url,
        desc = req.body.description;
-    var add= { name: name , 
-        image: image_url, 
-        description: desc}; 
+    var add= { name: name ,
+        image: image_url,
+        description: desc};
     campground.create(add, function(err,camp){
         if(err){
             req.flash("error",err.message);
@@ -44,7 +45,7 @@ routes.post("/campgrounds",middleware.isLoggedIn, function(req,res){
 });
 //new the route which has the form for creating a new route
 routes.get("/campgrounds/new",middleware.isLoggedIn, function(req,res){
-   res.render("campground/new.ejs",{currentuser: req.user}); 
+   res.render("campground/new.ejs",{currentuser: req.user});
 });
 
 //shows more info about one campground
